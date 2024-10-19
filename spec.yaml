@@ -1,0 +1,58 @@
+openapi: 3.0.3
+info:
+  title: Transaction Ledger API
+  description: Manages transactions
+  version: 0.0.1
+
+
+paths:
+  /balance/{accountId}:
+    get:
+      tags:
+        - balance
+      operationId: getBalance
+      summary: Get Balance of account
+      description: Retrieves the current balance of an account unless a timeframe is specified
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: fromDate
+          in: query
+          required: false
+          schema:
+            type: string
+        - name: toDate
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Balance found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Balance'
+        '404':
+          description: Balance not found.
+
+components:
+  schemas:
+    Balance:
+      type: object
+      required:
+        - accountId
+      properties:
+        accountId:
+          type: string
+          format: uuid
+        fromDate:
+          type: string
+          format: date-time
+        toDate:
+          type: string
+          format: date-time

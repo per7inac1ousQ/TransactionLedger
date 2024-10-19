@@ -1,1 +1,6 @@
+pluginManagement {
+    plugins {
+        id 'org.openapi.generator' version "7.8.0"
+    }
+}
 rootProject.name = 'TransactionLedger'

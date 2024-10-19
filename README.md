@@ -18,6 +18,7 @@ Some test DB data should be populated automatically upon spinning up the Databas
 Run the application from the `TransactionLedgerApplication.java` class either using an IDE or via the following command.
 
 ## API Calls
+
 ### Get balances
 The application exposes a single API that gets you the balance of an individual account using the following `curl`:
 `curl -x /balance`...
